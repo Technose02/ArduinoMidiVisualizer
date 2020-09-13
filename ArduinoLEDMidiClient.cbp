@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters='&quot;COM5&quot; 28' />
 				<Compiler>
 					<Add option="-std=c++14" />
 					<Add option="-g" />
@@ -28,10 +29,13 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++14" />
 					<Add directory="include" />
+					<Add directory="C:/Program Files (x86)/Tobias Erichsen/teVirtualMIDISDK/C-Binding" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="C:/Program Files (x86)/Tobias Erichsen/teVirtualMIDISDK/C-Binding/teVirtualMIDI32.lib" />
 				</Linker>
 			</Target>
 		</Build>

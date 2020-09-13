@@ -14,7 +14,7 @@ const unsigned char KEYMAP_LENGTH = 73;
 class ArduinoSerialInterface
 {
     public:
-        ArduinoSerialInterface(const char* comPort, unsigned char offset);
+        ArduinoSerialInterface(const char* comPort, unsigned char offset, unsigned char isBlackOffset);
         virtual ~ArduinoSerialInterface();
 
         const unsigned char getOffset();
@@ -31,6 +31,7 @@ class ArduinoSerialInterface
 
     private:
         unsigned char               _offset;
+        unsigned char               _isBlackOffset;
         bool                        _isBlackMap[12];
         unsigned char               _keyMap[KEYMAP_LENGTH];
         std::unique_ptr<SerialPort> _serialPort;

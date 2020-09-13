@@ -2,8 +2,9 @@
 #include <iostream>
 #include "SerialPort.h"
 
-ArduinoSerialInterface::ArduinoSerialInterface(const char* comPort, unsigned char offset)
+ArduinoSerialInterface::ArduinoSerialInterface(const char* comPort, unsigned char offset, unsigned char isBlackOffset)
 : _offset(offset),
+  _isBlackOffset(isBlackOffset),
   _isBlackMap{false, true, false, true, false, false, true, false, true, false, true, false},
   _keyMap{ 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26,
           27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51,
@@ -53,14 +54,14 @@ void ArduinoSerialInterface::processMidiCommand(unsigned char* data, unsigned lo
         // NoteOn
         unsigned char color = (unsigned char)((isBlack(key) ? (2 + 2 * channelNumber) : (1 + 2 * channelNumber)));
         char bok = isBlack(key) ? 'k' : 'w';
-        std::cout << "Setze für Kanal " << (channelNumber + 1) << " Note " << key << "(" << bok << ") auf Farbcode " << color << std::endl;
+        std::cout << "Setze fuer Kanal " << (unsigned int) (channelNumber + 1) << " Note " << (unsigned int) key << "(" << bok << ") auf Farbcode " << (unsigned int) color << std::endl;
         activateLed(key, color);
     }
 }
 
 bool ArduinoSerialInterface::isBlack (unsigned char key)
 {
-    return _isBlackMap[(key + _offset) % 12];
+    return _isBlackMap[(key + _isBlackOffset) % 12];
 }
 
 bool ArduinoSerialInterface::isOpen ()

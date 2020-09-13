@@ -77,7 +77,7 @@ int main(int argc, char** argv)
     cout<< "offset: " << offset << endl;
 
     // Arduino-SerialInterface erstellen
-    unique_ptr<ArduinoSerialInterface> _asi = make_unique<ArduinoSerialInterface>(comPort.c_str(), offset);
+    unique_ptr<ArduinoSerialInterface> _asi = make_unique<ArduinoSerialInterface>(comPort.c_str(), offset, 0);
 
     if (_asi->isOpen() )
     {
