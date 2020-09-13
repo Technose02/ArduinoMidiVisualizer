@@ -32,11 +32,40 @@ void ArduinoSerialInterface::setOffset(const unsigned char offset)
 
 void ArduinoSerialInterface::processMidiCommand(unsigned char* data, unsigned long int length)
 {
+    if (length < 3)
+    {
+        return;
+    }
+
+    unsigned char first = data[0];
+    unsigned char key = data[1];
+    unsigned char vel = data[2];
+    unsigned char upper = (unsigned char )(first / 16);
+    unsigned char channelNumber = (unsigned char )(first % 16);
+
+    if (upper == 8 || (upper == 9 && vel == 0x0))
+    {
+        // NoteOff
+        deactivateLed(key);
+    }
+    else if (upper == 9)
+    {
+        // NoteOn
+        unsigned char color = (unsigned char)((isBlack(key) ? (2 + 2 * channelNumber) : (1 + 2 * channelNumber)));
+        char bok = isBlack(key) ? 'k' : 'w';
+        std::cout << "Setze für Kanal " << (channelNumber + 1) << " Note " << key << "(" << bok << ") auf Farbcode " << color << std::endl;
+        activateLed(key, color);
+    }
 }
 
 bool ArduinoSerialInterface::isBlack (unsigned char key)
 {
     return _isBlackMap[(key + _offset) % 12];
+}
+
+bool ArduinoSerialInterface::isOpen ()
+{
+    return _serialPort->isOpen();
 }
 
 void ArduinoSerialInterface::close()

@@ -34,3 +34,38 @@
 	"Windows.h"
 	"SerialPort.h"
 
+1600033758 source:c:\users\user\documents\dev\projects\arduinomidivisualizer\src\arduinoserialinterface.cpp
+	"ArduinoSerialInterface.h"
+	<iostream>
+	"SerialPort.h"
+
+1600033715 c:\users\user\documents\dev\projects\arduinomidivisualizer\include\arduinoserialinterface.h
+	<memory>
+
+1584823669 c:\users\user\documents\dev\projects\arduinomidivisualizer\include\serialport.h
+	<memory>
+
+1584820054 source:c:\users\user\documents\dev\projects\arduinomidivisualizer\src\midiinput.cpp
+	"MidiInput.h"
+	<memory>
+	<iostream>
+	"teVirtualMIDI.h"
+
+1584820077 c:\users\user\documents\dev\projects\arduinomidivisualizer\include\midiinput.h
+	<memory>
+
+1600032922 source:c:\users\user\documents\dev\projects\arduinomidivisualizer\src\serialport.cpp
+	<memory>
+	<iostream>
+	"Windows.h"
+	"SerialPort.h"
+
+1600034093 source:c:\users\user\documents\dev\projects\arduinomidivisualizer\main.cpp
+	<iostream>
+	<memory>
+	<thread>
+	<sstream>
+	<iomanip>
+	"MidiInput.h"
+	"ArduinoSerialInterface.h"
+

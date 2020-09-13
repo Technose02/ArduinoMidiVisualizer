@@ -24,6 +24,7 @@ class ArduinoSerialInterface
         bool clearLeds();
         bool setLed(unsigned char idx, unsigned char col);
         bool showLeds();
+        bool isOpen();
 
 
     protected:

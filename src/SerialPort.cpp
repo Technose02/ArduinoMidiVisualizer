@@ -54,7 +54,7 @@ private:
             //  Handle the error.
             DWORD err = GetLastError();
             printf ("CreateFileA failed with error %u.\n", err);
-            printf ("COM-PORT \"%s\" could not be opened!", _portName.c_str());
+            printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
 
@@ -69,7 +69,7 @@ private:
             //  Handle the error.
             DWORD err = GetLastError();
             printf ("GetCommState failed with error %u.\n", err);
-            printf ("COM-PORT \"%s\" could not be opened!", _portName.c_str());
+            printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
 
@@ -86,7 +86,7 @@ private:
             //  Handle the error.
             DWORD err = GetLastError();
             printf ("SetCommState failed with error %u.\n", err);
-            printf ("COM-PORT \"%s\" could not be opened!", _portName.c_str());
+            printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
 
@@ -96,7 +96,7 @@ private:
             //  Handle the error.
             DWORD err = GetLastError();
             printf ("GetCommState failed with error %u.\n", err);
-            printf ("COM-PORT \"%s\" could not be opened!", _portName.c_str());
+            printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
 
@@ -138,7 +138,7 @@ public:
             {
                 DWORD err = GetLastError();
                 printf ("CloseHandle failed with error %u.\n", err);
-                printf ("COM-PORT \"%s\" could not be closed!", _portName.c_str());
+                printf ("COM-PORT \"%s\" could not be closed!\n", _portName.c_str());
                 return;
             }
         }
