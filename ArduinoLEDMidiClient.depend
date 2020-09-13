@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1584820054 source:c:\users\user\documents\dev\projects\arduinoledmidiclient\src\midiinput.cpp
+	"MidiInput.h"
+	<memory>
+	<iostream>
+	"teVirtualMIDI.h"
+
+1584820077 c:\users\user\documents\dev\projects\arduinoledmidiclient\include\midiinput.h
+	<memory>
+
+1584820255 source:c:\users\user\documents\dev\projects\arduinoledmidiclient\main.cpp
+	<iostream>
+	<memory>
+	<thread>
+	"MidiInput.h"
+
+1574874522 c:\program files (x86)\tobias erichsen\tevirtualmidisdk\c-binding\tevirtualmidi.h
+	<windows.h>
+
+1584921929 source:c:\users\user\documents\dev\projects\arduinoledmidiclient\src\arduinoserialinterface.cpp
+	"ArduinoSerialInterface.h"
+	<iostream>
+	"SerialPort.h"
+
+1584921922 c:\users\user\documents\dev\projects\arduinoledmidiclient\include\arduinoserialinterface.h
+	<memory>
+
+1584823669 c:\users\user\documents\dev\projects\arduinoledmidiclient\include\serialport.h
+	<memory>
+
+1585522416 source:c:\users\user\documents\dev\projects\arduinoledmidiclient\src\serialport.cpp
+	<memory>
+	<iostream>
+	"Windows.h"
+	"SerialPort.h"
+
