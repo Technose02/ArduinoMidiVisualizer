@@ -30,7 +30,7 @@ private:
     {
         if ( !PurgeComm(_file, PURGE_RXABORT | PURGE_RXCLEAR | PURGE_TXABORT | PURGE_TXCLEAR) )
         {
-            printf ("PurgeComm failed with error %u.\n", GetLastError());
+            printf ("PurgeComm failed with error %u.\n", (int) GetLastError());
         }
     }
 
@@ -53,7 +53,7 @@ private:
         {
             //  Handle the error.
             DWORD err = GetLastError();
-            printf ("CreateFileA failed with error %u.\n", err);
+            printf ("CreateFileA failed with error %u.\n", (int) err);
             printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
@@ -68,7 +68,7 @@ private:
         {
             //  Handle the error.
             DWORD err = GetLastError();
-            printf ("GetCommState failed with error %u.\n", err);
+            printf ("GetCommState failed with error %u.\n", (int) err);
             printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
@@ -85,7 +85,7 @@ private:
         {
             //  Handle the error.
             DWORD err = GetLastError();
-            printf ("SetCommState failed with error %u.\n", err);
+            printf ("SetCommState failed with error %u.\n", (int) err);
             printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
@@ -95,7 +95,7 @@ private:
         {
             //  Handle the error.
             DWORD err = GetLastError();
-            printf ("GetCommState failed with error %u.\n", err);
+            printf ("GetCommState failed with error %u.\n", (int) err);
             printf ("COM-PORT \"%s\" could not be opened!\n", _portName.c_str());
             return;
         }
@@ -137,7 +137,7 @@ public:
             if ( !CloseHandle(_file) )
             {
                 DWORD err = GetLastError();
-                printf ("CloseHandle failed with error %u.\n", err);
+                printf ("CloseHandle failed with error %u.\n", (int) err);
                 printf ("COM-PORT \"%s\" could not be closed!\n", _portName.c_str());
                 return;
             }
@@ -147,9 +147,9 @@ public:
     long unsigned int read(unsigned char* buffer, int offset, int length)
     {
         long unsigned int ret = 0;
-        if ( !ReadFile(_file, (void*)buffer + offset, length, &ret, NULL) )
+        if ( !ReadFile(_file, (void*) (buffer + offset), length, &ret, NULL) )
         {
-            printf ("ReadFile failed with error %u.\n", GetLastError());
+            printf ("ReadFile failed with error %u.\n", (int) GetLastError());
             return 0;
         }
         return ret;
@@ -158,9 +158,9 @@ public:
     long unsigned int write(unsigned char* buffer, int offset, int length)
     {
         long unsigned int ret = 0;
-        if ( !WriteFile(_file, (void*)buffer + offset, length, &ret, NULL) )
+        if ( !WriteFile(_file, (void*) (buffer + offset), length, &ret, NULL) )
         {
-            printf ("WriteFile failed with error %u.\n", GetLastError());
+            printf ("WriteFile failed with error %u.\n", (int) GetLastError());
             return 0;
         }
         return ret;
