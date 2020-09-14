@@ -65,7 +65,7 @@ byte idx;
 byte col;
 byte cmdPos;
 
-byte writePos = -1;
+byte writeAction = 0;
 
 void showLeds() {
   pixels.show();
@@ -99,51 +99,41 @@ void loop() {
   if (Serial.available()) {
     byte b = Serial.read();
 
+    writeAction = 0;
+    
     switch (cmdPos) {
       case 0: // Warten auf neues Kommando
         if (b < CMD_SET_LED) {
           cmd = CMD_SET_LED;
           idx = b;
           cmdPos ++;
-          writePos = -1;
+          // in diesem Durchlauf nichts ausgeben, warte noch auf col
         } else if (b == CMD_SHOW_LEDS) {
           cmd = b;
           showLeds();
-          writePos = 0;
+          writeAction = 1; // in diesem Durchlauf sowohl nur cmd ausgeben
         } else if (b == CMD_CLEAR_LEDS) {
           cmd = b;
           clearLeds();
-          writePos = 0;
+          writeAction = 1; // in diesem Durchlauf sowohl nur cmd ausgeben
         }
         break;
       case 1: // Habe den Index für ein SET_LED-Kommando
               // gelesen und lese jetzt den col-Wert
         col = b;
         setLed();
-        writePos = 0;
+        writeAction = 2; // in diesem Durchlauf sowohl idx als auch col ausgeben
         cmdPos = 0;
         break;
     }
 
-    switch (writePos) {
-      case 0:
-        if (cmd == CMD_SET_LED) {
-          Serial.write(idx);
-          writePos ++;
-        } else if (cmd == CMD_SHOW_LEDS) {
-          Serial.write(cmd);
-          writePos = -1;
-        } else if (cmd == CMD_CLEAR_LEDS) {
-          Serial.write(cmd);
-          writePos = -1;
-        }
-        break;
+    switch (writeAction) {
       case 1:
-        Serial.write(col);
-        writePos = -1;
+        Serial.write(cmd);
         break;
+      case 2:
+          Serial.write(idx);
+          Serial.write(col);
     }
-    
-    
   }
 }
