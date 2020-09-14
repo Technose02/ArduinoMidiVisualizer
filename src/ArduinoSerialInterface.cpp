@@ -110,11 +110,11 @@ void ArduinoSerialInterface::activateLed(unsigned char key, unsigned char col)
 {
     if (setLed(key, col))
     {
-        std::cout << "Set led " << key << " to ""on""" << std::endl;
+        std::cout << "Set led " << (unsigned int)key << " to ""on""" << std::endl;
     }
     else
     {
-        std::cout << "Error setting led " << key << " to ""on""" << std::endl;
+        std::cout << "Error setting led " << (unsigned int)key << " to ""on""" << std::endl;
     }
 }
 
@@ -122,11 +122,11 @@ void ArduinoSerialInterface::deactivateLed(unsigned char key)
 {
     if (setLed(key, 0x0))
     {
-        std::cout << "Set led " << key << " to ""off""" << std::endl;
+        std::cout << "Set led " << (unsigned int)key << " to ""off""" << std::endl;
     }
     else
     {
-        std::cout << "Error setting led " << key << " to ""off""" << std::endl;
+        std::cout << "Error setting led " << (unsigned int)key << " to ""off""" << std::endl;
     }
 }
 
